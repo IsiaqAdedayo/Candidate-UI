@@ -2,6 +2,7 @@
 
 import { FormField, Input, Select, Textarea } from "../ui";
 import { ApplicationFormData, AvailabilityOption, FormErrors } from "../../types";
+import { formatCurrency } from "../../lib/formatters";
 
 interface PersonalInfoProps {
   form: ApplicationFormData;
@@ -130,7 +131,7 @@ export function RoleInfo({ form, errors, onChange }: RoleInfoProps) {
           <Input
             placeholder="e.g. ₦80,000 / year"
             value={form.currentSalary}
-            onChange={(e) => onChange("currentSalary", e.target.value)}
+            onChange={(e) => onChange("currentSalary", formatCurrency(e.target.value))}
           />
         </FormField>
 
@@ -142,7 +143,7 @@ export function RoleInfo({ form, errors, onChange }: RoleInfoProps) {
           <Input
             placeholder="e.g. ₦100,000 / year"
             value={form.expectedSalary}
-            onChange={(e) => onChange("expectedSalary", e.target.value)}
+            onChange={(e) => onChange("expectedSalary", formatCurrency(e.target.value))}
             error={!!errors.expectedSalary}
           />
         </FormField>
